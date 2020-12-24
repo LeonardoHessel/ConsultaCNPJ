@@ -20,18 +20,19 @@ namespace ConsultaCNPJ
         private void button1_Click(object sender, EventArgs e)
         {
             string cnpj = textBox1.Text;
-            using (var sepd = WSSepd.WsConsultaSoap())
-            {
 
-            }
             try
             {
-                var enterprise = ;
-            }
-            catch (Exception)
-            {
 
-                throw;
+                var ws = new WSDataPrev.ServicosDataprevSoapClient();
+                var par = new WSDataPrev.parametrosTO();
+                
+                var empresa = ws.GetSituacaoFiscalPrevidenciaria(par);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

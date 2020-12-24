@@ -1,0 +1,10 @@
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\bin\Debug\ConsultaCNPJ.exe.config
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\bin\Debug\ConsultaCNPJ.exe
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\bin\Debug\ConsultaCNPJ.pdb
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.csprojAssemblyReference.cache
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.Form1.resources
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.Properties.Resources.resources
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.csproj.GenerateResource.cache
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.csproj.CoreCompileInputs.cache
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.exe
+C:\DevFiles\ConsultaCNPJ\ConsultaCNPJ\obj\Debug\ConsultaCNPJ.pdb

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://sisfpj.dataprev.gov.br/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://sisfpj.dataprev.gov.br/" />
+      <s:element name="GetSituacaoFiscalPrevidenciaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametrosReferencia" type="s1:parametrosTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSituacaoFiscalPrevidenciariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSituacaoFiscalPrevidenciariaResult" type="s1:consultaTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://sisfpj.dataprev.gov.br/">
+      <s:complexType name="parametrosTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="sistema-origem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipo-ni" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ni" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="compet-final" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="data-ref" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="mei" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="data-mei" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipo-consulta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="reprocessamento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="consultaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cabecalho" type="s1:cabecalhoTO" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="resultado" type="s1:resultadoTO" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="detalhamento" type="s1:ArrayOfEstabelecimentoTO" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="erro" type="s1:erroTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="cabecalhoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipo-ni" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ni" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="resultadoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cp-rfb" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cpden-rfb" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cp-pgfn" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cpden-pgfn" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEstabelecimentoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="estabelecimento" type="s1:estabelecimentoTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="estabelecimentoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="tipo-ni" type="s1:tipoNi" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ni" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ausencias-gfip" type="s1:ArrayOfAusenciaTO" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="divergencias-gfip-gps" type="s1:ArrayOfDivergenciaTO" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="debitos" type="s1:ArrayOfDebitoTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="tipoNi">
+        <s:restriction base="s:string">
+          <s:enumeration value="OUTROS" />
+          <s:enumeration value="CNPJ" />
+          <s:enumeration value="CEI" />
+          <s:enumeration value="CPF" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfAusenciaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="ausencia" type="s1:ausenciaTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ausenciaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="competencia" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDivergenciaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="divergencia" type="s1:divergenciaTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="divergenciaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="competencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="situacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="fpas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="valor-inss" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="valor-terceiros" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDebitoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="debito" type="s1:debitoTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="debitoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="numero" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ambito" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codigo-situacao-fase" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="descricao-situacao-fase" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="exigivel" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="saldo-original" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="parcelamento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="data-consolidacao" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="debcad" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="parcelas-atrasadas" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="data-requerimento" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="erroTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="descricao" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSituacaoFiscalPrevidenciariaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSituacaoFiscalPrevidenciaria" />
+  </wsdl:message>
+  <wsdl:message name="GetSituacaoFiscalPrevidenciariaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSituacaoFiscalPrevidenciariaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicosDataprevSoap">
+    <wsdl:operation name="GetSituacaoFiscalPrevidenciaria">
+      <wsdl:input message="tns:GetSituacaoFiscalPrevidenciariaSoapIn" />
+      <wsdl:output message="tns:GetSituacaoFiscalPrevidenciariaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServicosDataprevHttpGet" />
+  <wsdl:portType name="ServicosDataprevHttpPost" />
+  <wsdl:binding name="ServicosDataprevSoap" type="tns:ServicosDataprevSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSituacaoFiscalPrevidenciaria">
+      <soap:operation soapAction="http://tempuri.org/GetSituacaoFiscalPrevidenciaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicosDataprevSoap12" type="tns:ServicosDataprevSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSituacaoFiscalPrevidenciaria">
+      <soap12:operation soapAction="http://tempuri.org/GetSituacaoFiscalPrevidenciaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicosDataprevHttpGet" type="tns:ServicosDataprevHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="ServicosDataprevHttpPost" type="tns:ServicosDataprevHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="ServicosDataprev">
+    <wsdl:port name="ServicosDataprevSoap" binding="tns:ServicosDataprevSoap">
+      <soap:address location="http://www8.receita.fazenda.gov.br/simplesnacional/aplicacoes/atbhe/aplicacoessimples.app/ServicosDataprev.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicosDataprevSoap12" binding="tns:ServicosDataprevSoap12">
+      <soap12:address location="http://www8.receita.fazenda.gov.br/simplesnacional/aplicacoes/atbhe/aplicacoessimples.app/ServicosDataprev.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicosDataprevHttpGet" binding="tns:ServicosDataprevHttpGet">
+      <http:address location="http://www8.receita.fazenda.gov.br/simplesnacional/aplicacoes/atbhe/aplicacoessimples.app/ServicosDataprev.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicosDataprevHttpPost" binding="tns:ServicosDataprevHttpPost">
+      <http:address location="http://www8.receita.fazenda.gov.br/simplesnacional/aplicacoes/atbhe/aplicacoessimples.app/ServicosDataprev.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
